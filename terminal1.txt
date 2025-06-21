@@ -1,0 +1,1045 @@
+theia@theiaopenshift-knittala:/home/project$ [ ! -d 'guestbook' ] && git clone https://github.com/ibm-developer-skills-network/guestbook
+Cloning into 'guestbook'...
+remote: Enumerating objects: 162, done.
+remote: Counting objects: 100% (63/63), done.
+remote: Compressing objects: 100% (40/40), done.
+remote: Total 162 (delta 47), reused 23 (delta 23), pack-reused 99 (from 2)
+Receiving objects: 100% (162/162), 71.00 KiB | 17.75 MiB/s, done.
+Resolving deltas: 100% (65/65), done.
+theia@theiaopenshift-knittala:/home/project$ cd guestbook
+theia@theiaopenshift-knittala:/home/project/guest
+book$ ls
+LICENSE  README.md  v1  v2
+theia@theiaopenshift-knittala:/home/project/guest
+book$ cd v1/guestbook
+theia@theiaopenshift-knittala:/home/project/guest
+theia@theiaopenshift-knittala:/home/project$ [ ! -d 'guestbook' ] && git clone https://github.com/ibm-developer-skills-network/guestbook
+Cloning into 'guestbook'...
+remote: Enumerating objects: 162, done.
+remote: Counting objects: 100% (63/63), done.
+remote: Compressing objects: 100% (40/40), done.
+remote: Total 162 (delta 47), reused 23 (delta 23), pack-reused 99 (from 2)
+Receiving objects: 100% (162/162), 71.00 KiB | 17.75 MiB/s, done.
+Resolving deltas: 100% (65/65), done.
+theia@theiaopenshift-knittala:/home/project$ cd guestbook
+theia@theiaopenshift-knittala:/home/project/guest
+book$ ls
+LICENSE  README.md  v1  v2
+theia@theiaopenshift-knittala:/home/project/guest
+book$ cd v1/guestbook
+theia@theiaopenshift-knittala:/home/project/guest
+book/v1/guestbook$ export MY_NAMESPACE=sn-labs-$USERNAME
+theia@theiaopenshift-knittala:/home/project/guest
+book/v1/guestbook$ dockedocker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1
+[+] Building 70.9s (19/19) FINISHED docker:default=> => transferring context: 92.39kB        0.0s
+ => [internal] load build definition from   0.0s
+ => => transferring dockerfile: 620B        0.0s
+ => [internal] load metadata for docker.io  1.7s
+ => [internal] load metadata for docker.io  2.0s
+ => [internal] load .dockerignore           0.0s
+ => => transferring context: 2B             0.0s
+ => [builder 1/6] FROM docker.io/library/  43.8s
+ => => resolve docker.io/library/golang:1.  0.0s
+ => => sha256:c37a56a6d654 7.12kB / 7.12kB  0.0s
+ => => sha256:f049f75f014e 5.16MB / 5.16MB  1.3s
+ => => sha256:56261d0e6b 10.88MB / 10.88MB  2.5s
+ => => sha256:740324e52de7 1.80kB / 1.80kB  0.0s
+ => => sha256:bbeef03cda 55.03MB / 55.03MB  4.4s
+ => => sha256:9bd150679 54.58MB / 54.58MB  11.1s
+ => => sha256:bfcb68b5b 85.98MB / 85.98MB  17.5s
+ => => extracting sha256:bbeef03cda1f5d6c9  8.1s
+ => => sha256:06d0c5d 141.98MB / 141.98MB  28.7s
+ => => sha256:cc7973a07a5b4a4 156B / 156B  11.9s
+ => => extracting sha256:f049f75f014ee8fec  0.8s
+ => => extracting sha256:56261d0e6b05ece42  0.7s
+ => => extracting sha256:9bd150679dbdb02d9  8.4s
+ => => extracting sha256:bfcb68b5bd105d3f8  5.9s
+ => => extracting sha256:06d0c5d18ef41fa1c  8.0s
+ => => extracting sha256:cc7973a07a5b4a443  0.0s
+ => [stage-1 1/7] FROM docker.io/library/  29.0s
+ => => resolve docker.io/library/ubuntu:18  0.0s
+ => => sha256:dca176c9663a7ba4 424B / 424B  0.0s
+ => => sha256:f9a80a55f492 2.30kB / 2.30kB  0.0s
+ => => sha256:7c457f213 25.69MB / 25.69MB  22.7s
+ => => extracting sha256:7c457f213c7634afb  4.0s
+ => [internal] load build context           0.0s
+ => => transferring context: 92.39kB        0.0s
+ => [builder 2/6] WORKDIR /app             19.3s
+ => [builder 3/6] COPY main.go .            0.3s
+ => [builder 4/6] RUN go mod init guestboo  0.4s
+ => [builder 5/6] RUN go mod tidy           1.5s
+ => [builder 6/6] RUN go build -o main mai  2.6s
+ => [stage-1 2/7] COPY --from=builder /app  0.1s
+ => [stage-1 3/7] COPY public/index.html /  0.1s
+ => [stage-1 4/7] COPY public/script.js /a  0.0s
+ => [stage-1 5/7] COPY public/style.css /a  0.1s
+ => [stage-1 6/7] COPY public/jquery.min.j  0.2s
+ => [stage-1 7/7] WORKDIR /app              0.1s
+ => exporting to image                      0.2s
+ => => exporting layers                     0.1s
+ => => writing image sha256:3a4039d7ebf94e  0.0s
+ => => naming to us.icr.io/sn-labs-knittal  0.0s
+theia@theiaopenshift-knittala:/home/project/guest
+book/v1/guestbook$ docker push us.icr.io/$MY_NAME
+SPACE/guestbook:v1
+The push refers to repository [us.icr.io/sn-labs-knittala/guestbook]
+5f70bf18a086: Pushed 
+9e511c5f40a6: Pushed 
+21ec735df83a: Pushed 
+e275d58cb49e: Pushed 
+1cab6d227c79: Pushed 
+21f71d20e354: Pushed 
+548a79621a42: Pushed 
+v1: digest: sha256:664f44d41ea3792eab3855809d0200108d9dca18e19c9c943e92f67b92f11f61 size: 1776
+book/v1/guestbook$ ibmcloud cr images
+Listing images...
+
+Repository                                                               Tag                                                                           Digest         Namespace          Created         Size     Security status
+us.icr.io/sn-labs-knittala/guestbook                                     v1                                                                            664f44d41ea3   sn-labs-knittala   2 minutes ago   32 MB    -
+us.icr.io/sn-labsassets/categories-watson-nlp-runtime                    latest                                                                        6b01b1e5527b   sn-labsassets      2 years ago     3.1 GB   -
+us.icr.io/sn-labsassets/classification-watson-nlp-runtime                latest                                                                        dbd407898549   sn-labsassets      2 years ago     4.0 GB   -
+us.icr.io/sn-labsassets/concepts-watson-nlp-runtime                      latest                                                                        1e4741f10569   sn-labsassets      2 years ago     3.2 GB   -
+us.icr.io/sn-labsassets/custom-watson-nlp-runtime                        latest                                                                        f6513e19a33d   sn-labsassets      2 years ago     6.5 GB   -
+us.icr.io/sn-labsassets/detag-watson-nlp-runtime                         latest                                                                        38916c2119fc   sn-labsassets      2 years ago     2.7 GB   -
+us.icr.io/sn-labsassets/emotion-watson-nlp-runtime                       latest                                                                        1c9de1d27318   sn-labsassets      2 years ago     4.0 GB   -
+us.icr.io/sn-labsassets/entity-mentions-bert-watson-nlp-runtime          latest                                                                        57d92957214f   sn-labsassets      2 years ago     3.8 GB   -
+us.icr.io/sn-labsassets/entity-mentions-bilstm-watson-nlp-runtime        latest                                                                        76dbd3bdb12b   sn-labsassets      2 years ago     2.9 GB   -
+us.icr.io/sn-labsassets/entity-mentions-rbr-multi-watson-nlp-runtime     latest                                                                        577399d7b4e7   sn-labsassets      2 years ago     2.7 GB   -
+us.icr.io/sn-labsassets/entity-mentions-rbr-watson-nlp-runtime           latest                                                                        506cc92ecd3f   sn-labsassets      2 years ago     2.7 GB   -
+us.icr.io/sn-labsassets/entity-mentions-sire-watson-nlp-runtime          latest                                                                        cd4e48efd3f6   sn-labsassets      2 years ago     2.8 GB   -
+us.icr.io/sn-labsassets/entity-mentions-transformer-watson-nlp-runtime   latest                                                                        0584c56563ce   sn-labsassets      2 years ago     3.8 GB   -
+us.icr.io/sn-labsassets/instructions-splitter                            latest                                                                        2af122cfe4ee   sn-labsassets      4 years ago     21 MB    -
+us.icr.io/sn-labsassets/istio-examples-bookinfo-details-v1               1.17.0                                                                        85819dbebb6d   sn-labsassets      2 years ago     62 MB    -
+us.icr.io/sn-labsassets/istio-examples-bookinfo-productpage-v1           1.17.0                                                                        4c58e1fbe731   sn-labsassets      2 years ago     68 MB    -
+us.icr.io/sn-labsassets/istio-examples-bookinfo-ratings-v1               1.17.0                                                                        f529526d2807   sn-labsassets      2 years ago     57 MB    -
+us.icr.io/sn-labsassets/istio-examples-bookinfo-reviews-v3               1.17.0                                                                        0b37c5a396f7   sn-labsassets      2 years ago     415 MB   -
+us.icr.io/sn-labsassets/keywords-watson-nlp-runtime                      latest                                                                        e2b9dc471ae0   sn-labsassets      2 years ago     2.7 GB   -
+us.icr.io/sn-labsassets/lang-detect-watson-nlp-runtime                   latest                                                                        4d3b44e72af0   sn-labsassets      2 years ago     2.7 GB   -
+us.icr.io/sn-labsassets/llmchatbot-demo                                  latest                                                                        b0c45851acbe   sn-labsassets      2 years ago     5.1 GB   -
+us.icr.io/sn-labsassets/nginx                                            1.25.1                                                                        73e957703f12   sn-labsassets      2 years ago     71 MB    -
+us.icr.io/sn-labsassets/nginx                                            latest                                                                        73e957703f12   sn-labsassets      2 years ago     71 MB    -
+us.icr.io/sn-labsassets/nginx                                            sha256-85eabf2757cb5b5b84248d7feb019079501dfd8691fc79b8b1d0ff1591a6270b.sig   9a38ca67e16d   sn-labsassets      -               308 B    -
+us.icr.io/sn-labsassets/nginx                                            signed                                                                        85eabf2757cb   sn-labsassets      2 years ago     67 MB    -
+us.icr.io/sn-labsassets/nginx                                            unsigned                                                                      73e957703f12   sn-labsassets      2 years ago     71 MB    -
+us.icr.io/sn-labsassets/noun-phrases-watson-nlp-runtime                  latest                                                                        c696f6af9797   sn-labsassets      2 years ago     2.7 GB   -
+us.icr.io/sn-labsassets/openshift-console-auth-proxy                     0.0.1                                                                         f3cd15bd3584   sn-labsassets      5 years ago     355 MB   -
+us.icr.io/sn-labsassets/pgadmin-theia                                    latest                                                                        0adf67ad81a3   sn-labsassets      4 years ago     101 MB   -
+us.icr.io/sn-labsassets/phpmyadmin                                       latest                                                                        b66c30786353   sn-labsassets      4 years ago     163 MB   -
+us.icr.io/sn-labsassets/relations-sire-watson-nlp-runtime                latest                                                                        65c2e74995d5   sn-labsassets      2 years ago     2.8 GB   -
+us.icr.io/sn-labsassets/relations-transformer-watson-nlp-runtime         latest                                                                        18ffd6c35726   sn-labsassets      2 years ago     3.6 GB   -
+us.icr.io/sn-labsassets/relations-watson-nlp-runtime                     latest                                                                        3547dcc15c43   sn-labsassets      2 years ago     3.6 GB   -
+us.icr.io/sn-labsassets/sentiment-bert-watson-nlp-runtime                latest                                                                        b7f6814ca014   sn-labsassets      2 years ago     3.7 GB   -
+us.icr.io/sn-labsassets/sentiment-cnn-watson-nlp-runtime                 latest                                                                        d89e9fbfccf1   sn-labsassets      2 years ago     2.8 GB   -
+us.icr.io/sn-labsassets/sentiment-watson-nlp-runtime                     latest                                                                        a0b76bd2dad7   sn-labsassets      2 years ago     4.2 GB   -
+us.icr.io/sn-labsassets/speech-standalone                                latest                                                                        635f94bc2c1c   sn-labsassets      2 years ago     3.7 GB   -
+us.icr.io/sn-labsassets/syntax-watson-nlp-runtime                        latest                                                                        332c147eb437   sn-labsassets      2 years ago     2.7 GB   -
+us.icr.io/sn-labsassets/tts-standalone                                   latest                                                                        56ce85280714   sn-labsassets      2 years ago     3.7 GB   -
+us.icr.io/sn-labsassets/tts-standalone-full                              latest                                                                        0285cd4b20bd   sn-labsassets      2 years ago     5.4 GB   -
+us.icr.io/sn-labsassets/watson-nlp-runtime                               1.0.18                                                                        0cbcbd5bde0e   sn-labsassets      2 years ago     2.7 GB   -
+us.icr.io/sn-labsassets/watson-nlp_syntax_izumo_lang_en_stock            1.0.7                                                                         362ba4b6ef00   sn-labsassets      2 years ago     14 MB    -
+us.icr.io/sn-labsassets/watson-nlp_syntax_izumo_lang_fr_stock            1.0.7                                                                         2d47c44882c7   sn-labsassets      2 years ago     14 MB    -
+
+OK
+theia@theiaopenshift-knittala:/home/project/guest
+book/v1/guestbook$ echo $MY_NAMESPACE
+sn-labs-knittala
+took/v1/guestbook$ kubectl apply -f deployment.yml
+deployment.apps/guestbook created-f deployment.yml
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+theia@theiaopenshift-knittala:/home/project/guestboo
+theia@theiaopenshift-knittala:/home/project/guestbook/theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ dt us.icr.io/$MY_NAMESPACE/guestbook:v1 
+ocker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
+[+] Building 0.0s (0/1)                        docker:[+] Building 0.2s (1/3)                        docker:default
+ => [internal] load build definition from Dockerfile     0.0s
+ => => transferring dockerfile: 620B                  [+] Building 0.3s (1/3)                        docker:defaultternal] load metadata for docker.io/library/ubu
+ => [internal] load build definition from Dockerfile     0.0sternal] load metadata for docker.io/library/gol
+ => => transferring dockerfile: 620B                  [+] Building 0.5s (1/3)                        docker:defaultternal] load metadata for docker.io/library/ubu
+ => [internal] load build definition from Dockerfile     0.0sternal] load metadata for docker.io/library/gol
+ => => transferring dockerfile: 620B                  [+] Building 0.6s (1/3)                        docker:defaultternal] load metadata for docker.io/library/ubu
+ => [internal] load build definition from Dockerfile     0.0sternal] load metadata for docker.io/library/gol
+ => => transferring dockerfile: 620B                  [+] Building 0.8s (2/3)                        docker:defaultternal] load metadata for docker.io/library/ubu
+ => [internal] load build definition from Dockerfile     0.0sternal] load metadata for docker.io/library/gol
+ => => transferring dockerfile: 620B                  [+] Building 0.9s (14/18)                      docker:defaultternal] load metadata for docker.io/library/ubu
+ => CACHED [builder 3/6] COPY main.go .                  0.0sternal] load metadata for docker.io/library/gol
+ => CACHED [builder 4/6] RUN go mod init guestbook       0.0s
+ => CACHED [builder 5/6] RUN go mod tidy              [+] Building 1.1s (15/18)                      docker:defaultHED [builder 6/6] RUN go build -o main main.go 
+ => CACHED [builder 4/6] RUN go mod init guestbook       0.0sHED [stage-1 2/7] COPY --from=builder /app/main
+ => CACHED [builder 5/6] RUN go mod tidy                 0.0sage-1 3/7] COPY public/index.html /app/public/i
+ => CACHED [builder 6/6] RUN go build -o main main.go [+] Building 1.2s (18/18)                      docker:defaultHED [stage-1 2/7] COPY --from=builder /app/main
+ => CACHED [stage-1 2/7] COPY --from=builder /app/main   0.0sage-1 3/7] COPY public/index.html /app/public/i
+ => [stage-1 3/7] COPY public/index.html /app/public/in  0.1sage-1 4/7] COPY public/script.js /app/public/sc
+ => [stage-1 4/7] COPY public/script.js /app/public/sc[+] Building 1.3s (18/19)                      docker:defaultage-1 5/7] COPY public/style.css /app/public/st
+ => [stage-1 4/7] COPY public/script.js /app/public/scr  0.1sage-1 6/7] COPY public/jquery.min.js /app/publi
+ => [stage-1 5/7] COPY public/style.css /app/public/sty  0.0sage-1 7/7] WORKDIR /app                        
+ => [stage-1 6/7] COPY public/jquery.min.js /app/publi[+] Building 1.4s (19/19) FINISHED             docker:defaultage-1 7/7] WORKDIR /app                        
+ => [internal] load build definition from Dockerfile     0.0sorting to image                                
+ => => transferring dockerfile: 620B                     0.0sexporting layers                               
+ => [internal] load metadata for docker.io/library/ubun  0.7s
+ => [internal] load metadata for docker.io/library/gola  0.8s
+ => [internal] load .dockerignore                        0.0s
+ => => transferring context: 2B                          0.0s
+ => [builder 1/6] FROM docker.io/library/golang:1.18@sh  0.0s
+ => [stage-1 1/7] FROM docker.io/library/ubuntu:18.04@s  0.0s
+ => [internal] load build context                        0.0s
+ => => transferring context: 1.23kB                      0.0s
+ => CACHED [builder 2/6] WORKDIR /app                    0.0s
+ => CACHED [builder 3/6] COPY main.go .                  0.0s
+ => CACHED [builder 4/6] RUN go mod init guestbook       0.0s
+ => CACHED [builder 5/6] RUN go mod tidy                 0.0s
+ => CACHED [builder 6/6] RUN go build -o main main.go    0.0s
+ => CACHED [stage-1 2/7] COPY --from=builder /app/main   0.0s
+ => [stage-1 3/7] COPY public/index.html /app/public/in  0.1s
+ => [stage-1 4/7] COPY public/script.js /app/public/scr  0.1s
+ => [stage-1 5/7] COPY public/style.css /app/public/sty  0.0s
+ => [stage-1 6/7] COPY public/jquery.min.js /app/public  0.0s
+ => [stage-1 7/7] WORKDIR /app                           0.0s
+ => exporting to image                                   0.1s
+ => => exporting layers                                  0.1s
+ => => writing image sha256:64833afc083db17cd84fa235163  0.0s
+ => => naming to us.icr.io/sn-labs-knittala/guestbook:v  0.0s
+The push refers to repository [us.icr.io/sn-labs-knittala/guestbook]
+5f70bf18a086: Layer already exists 
+4c021bd9e92a: Pushed 
+d5b82a70cd26: Pushed 
+f15bfb8cf01f: Pushed 
+e0ab807bbed7: Pushed 
+21f71d20e354: Layer already exists 
+548a79621a42: Layer already exists 
+v1: digest: sha256:1ede2d520d0bf95a2edeaf26e5ffd3f5604dfb906122e5cd7b592e01cbb25fce size: 1776
+theia@theiaopenshift-knittala:/home/project/guestbook/theia@theiaopenshift-knittala:/home/project/guestbook/
+theia@theiaopenshift-knittala:/home/project/guestbook/
+theia@theiaopenshift-knittala:/home/project/guestbook/
+theia@theiaopenshift-knittala:/home/project/guestbook/
+theia@theiaopenshift-knittala:/home/project/guestbook/
+theia@theiaopenshift-knittala:/home/project/guestbook/
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guest
+book$ kubectl apply -f deployment.yml
+The Deployment "guestbook" is invalid: spec.template.spec.containers[0].resources.requests: Invalid value: "20m": must be less than or equal to cpu limit of 5m
+theia@theiaopenshift-knittala:/home/project/guestbook/
+v1/guestbook$ kubectl apply -f deployment.yml
+deployment.apps/guestbook configured
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/
+v1/guestbook$ kubectl port-forward deployment.apps/guestbook 300v1/guestbook$ kubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+^Ctheia@theiaopenshift-knittala:/home/project/guestbook/v1/guestubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+^Ctheia@theiaopenshift-knittala:/home/project/guestbook/v1/guest
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ d
+ocker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
+[+] Building 1.4s (19/19) FINISHED             docker:default
+ => [internal] load build definition from Dockerfile     0.0s
+ => => transferring dockerfile: 620B                     0.0s
+ => [internal] load metadata for docker.io/library/ubun  0.7s
+ => [internal] load metadata for docker.io/library/gola  0.8s
+ => [internal] load .dockerignore                        0.0s
+ => => transferring context: 2B                          0.0s
+ => [builder 1/6] FROM docker.io/library/golang:1.18@sh  0.0s
+ => [stage-1 1/7] FROM docker.io/library/ubuntu:18.04@s  0.0s
+ => [internal] load build context                        0.0s
+ => => transferring context: 1.23kB                      0.0s
+ => CACHED [builder 2/6] WORKDIR /app                    0.0s
+ => CACHED [builder 3/6] COPY main.go .                  0.0s
+ => CACHED [builder 4/6] RUN go mod init guestbook       0.0s
+ => CACHED [builder 5/6] RUN go mod tidy                 0.0s
+ => CACHED [builder 6/6] RUN go build -o main main.go    0.0s
+ => CACHED [stage-1 2/7] COPY --from=builder /app/main   0.0s
+ => [stage-1 3/7] COPY public/index.html /app/public/in  0.1s
+ => [stage-1 4/7] COPY public/script.js /app/public/scr  0.1s
+ => [stage-1 5/7] COPY public/style.css /app/public/sty  0.0s
+ => [stage-1 6/7] COPY public/jquery.min.js /app/public  0.0s
+ => [stage-1 7/7] WORKDIR /app                           0.0s
+ => exporting to image                                   0.1s
+ => => exporting layers                                  0.1s
+ => => writing image sha256:64833afc083db17cd84fa235163  0.0s
+ => => naming to us.icr.io/sn-labs-knittala/guestbook:v  0.0s
+The push refers to repository [us.icr.io/sn-labs-knittala/guestbook]
+5f70bf18a086: Layer already exists 
+4c021bd9e92a: Pushed 
+d5b82a70cd26: Pushed 
+f15bfb8cf01f: Pushed 
+e0ab807bbed7: Pushed 
+21f71d20e354: Layer already exists 
+548a79621a42: Layer already exists 
+v1: digest: sha256:1ede2d520d0bf95a2edeaf26e5ffd3f5604dfb906122e5cd7b592e01cbb25fce size: 1776
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guest
+book$ kubectl apply -f deployment.yml
+The Deployment "guestbook" is invalid: spec.template.spec.containers[0].resources.requests: Invalid value: "20m": must be less than or equal to cpu limit of 5m
+theia@theiaopenshift-knittala:/home/project/guestbook/
+v1/guestbook$ kubectl apply -f deployment.yml
+deployment.apps/guestbook configured
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+theia@theiaopenshift-knittala:/home/project/guestbook/
+v1/guestbook$ kubectl port-forward deployment.apps/guestbook 300v1/guestbook$ kubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+^Ctheia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+ok$ docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
+[+] Building 1.1s (19/19) FINISHED               docker:default
+ => [internal] load build definition from Dockerfile       0.0s
+ => => transferring dockerfile: 620B                       0.0s
+ => [internal] load metadata for docker.io/library/ubuntu  0.7s
+ => [internal] load metadata for docker.io/library/golang  0.3s
+ => [internal] load .dockerignore                          0.0s
+ => => transferring context: 2B                            0.0s
+ => [internal] load build context                          0.0s
+ => => transferring context: 1.23kB                        0.0s
+ => [builder 1/6] FROM docker.io/library/golang:1.18@sha2  0.0s
+ => [stage-1 1/7] FROM docker.io/library/ubuntu:18.04@sha  0.0s
+ => CACHED [builder 2/6] WORKDIR /app                      0.0s
+ => CACHED [builder 3/6] COPY main.go .                    0.0s
+ => CACHED [builder 4/6] RUN go mod init guestbook         0.0s
+ => CACHED [builder 5/6] RUN go mod tidy                   0.0s
+ => CACHED [builder 6/6] RUN go build -o main main.go      0.0s
+ => CACHED [stage-1 2/7] COPY --from=builder /app/main /a  0.0s
+ => [stage-1 3/7] COPY public/index.html /app/public/inde  0.0s
+ => [stage-1 4/7] COPY public/script.js /app/public/scrip  0.0s
+ => [stage-1 5/7] COPY public/style.css /app/public/style  0.0s
+ => [stage-1 6/7] COPY public/jquery.min.js /app/public/j  0.1s
+ => [stage-1 7/7] WORKDIR /app                             0.0s
+ => exporting to image                                     0.1s
+ => => exporting layers                                    0.1s
+ => => writing image sha256:ba35a05f3d3127f82c46dbc3ce8b5  0.0s
+ => => naming to us.icr.io/sn-labs-knittala/guestbook:v1   0.0s
+The push refers to repository [us.icr.io/sn-labs-knittala/guestbook]
+5f70bf18a086: Layer already exists 
+8bf4630c0558: Pushed 
+d3f788c247be: Pushed 
+de403176a359: Pushed 
+fd8d1af9eb21: Pushed 
+21f71d20e354: Layer already exists 
+548a79621a42: Layer already exists 
+v1: digest: sha256:972c162937cc3f27a3aa97e7f8981e6cbf712805362fa5420658889079573660 size: 1776
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+ok$ kubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+^Ctheia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+ok$ docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
+[+] Building 1.0s (19/19) FINISHED               docker:default
+ => [internal] load build definition from Dockerfile       0.0s
+ => => transferring dockerfile: 620B                       0.0s
+ => [internal] load metadata for docker.io/library/ubuntu  0.5s
+ => [internal] load metadata for docker.io/library/golang  0.8s
+ => [internal] load .dockerignore                          0.0s
+ => => transferring context: 2B                            0.0s
+ => [builder 1/6] FROM docker.io/library/golang:1.18@sha2  0.0s
+ => [internal] load build context                          0.0s
+ => => transferring context: 205B                          0.0s
+ => [stage-1 1/7] FROM docker.io/library/ubuntu:18.04@sha  0.0s
+ => CACHED [builder 2/6] WORKDIR /app                      0.0s
+ => CACHED [builder 3/6] COPY main.go .                    0.0s
+ => CACHED [builder 4/6] RUN go mod init guestbook         0.0s
+ => CACHED [builder 5/6] RUN go mod tidy                   0.0s
+ => CACHED [builder 6/6] RUN go build -o main main.go      0.0s
+ => CACHED [stage-1 2/7] COPY --from=builder /app/main /a  0.0s
+ => CACHED [stage-1 3/7] COPY public/index.html /app/publ  0.0s
+ => CACHED [stage-1 4/7] COPY public/script.js /app/publi  0.0s
+ => CACHED [stage-1 5/7] COPY public/style.css /app/publi  0.0s
+ => CACHED [stage-1 6/7] COPY public/jquery.min.js /app/p  0.0s
+ => CACHED [stage-1 7/7] WORKDIR /app                      0.0s
+ => exporting to image                                     0.0s
+ => => exporting layers                                    0.0s
+ => => writing image sha256:ba35a05f3d3127f82c46dbc3ce8b5  0.0s
+ => => naming to us.icr.io/sn-labs-knittala/guestbook:v1   0.0s
+The push refers to repository [us.icr.io/sn-labs-knittala/guestbook]
+5f70bf18a086: Layer already exists 
+8bf4630c0558: Layer already exists 
+d3f788c247be: Layer already exists 
+de403176a359: Layer already exists 
+fd8d1af9eb21: Layer already exists 
+21f71d20e354: Layer already exists 
+548a79621a42: Layer already exists 
+v1: digest: sha256:972c162937cc3f27a3aa97e7f8981e6cbf712805362fa5420658889079573660 size: 1776
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+ok$ kubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+^Ctheia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+ok$ kubectl apply -f deployment.yml
+deployment.apps/guestbook unchanged
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+ok$ kubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000
+^Ctheia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+ok$ docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v2 && do
+cker push us.icr.io/$MY_NAMESPACE/guestbook:v2
+[+] Building 0.6s (19/19) FINISHED               docker:default
+ => [internal] load build definition from Dockerfile       0.0s
+ => => transferring dockerfile: 620B                       0.0s
+ => [internal] load metadata for docker.io/library/ubuntu  0.5s
+ => [internal] load metadata for docker.io/library/golang  0.3s
+ => [internal] load .dockerignore                          0.0s
+ => => transferring context: 2B                            0.0s
+ => [internal] load build context                          0.0s
+ => => transferring context: 205B                          0.0s
+ => [builder 1/6] FROM docker.io/library/golang:1.18@sha2  0.0s
+ => [stage-1 1/7] FROM docker.io/library/ubuntu:18.04@sha  0.0s
+ => CACHED [builder 2/6] WORKDIR /app                      0.0s
+ => CACHED [builder 3/6] COPY main.go .                    0.0s
+ => CACHED [builder 4/6] RUN go mod init guestbook         0.0s
+ => CACHED [builder 5/6] RUN go mod tidy                   0.0s
+ => CACHED [builder 6/6] RUN go build -o main main.go      0.0s
+ => CACHED [stage-1 2/7] COPY --from=builder /app/main /a  0.0s
+ => CACHED [stage-1 3/7] COPY public/index.html /app/publ  0.0s
+ => CACHED [stage-1 4/7] COPY public/script.js /app/publi  0.0s
+ => CACHED [stage-1 5/7] COPY public/style.css /app/publi  0.0s
+ => CACHED [stage-1 6/7] COPY public/jquery.min.js /app/p  0.0s
+ => CACHED [stage-1 7/7] WORKDIR /app                      0.0s
+ => exporting to image                                     0.0s
+ => => exporting layers                                    0.0s
+ => => writing image sha256:ba35a05f3d3127f82c46dbc3ce8b5  0.0s
+ => => naming to us.icr.io/sn-labs-knittala/guestbook:v2   0.0s
+The push refers to repository [us.icr.io/sn-labs-knittala/guestbook]
+5f70bf18a086: Layer already exists 
+8bf4630c0558: Layer already exists 
+d3f788c247be: Layer already exists 
+de403176a359: Layer already exists 
+fd8d1af9eb21: Layer already exists 
+21f71d20e354: Layer already exists 
+548a79621a42: Layer already exists 
+v2: digest: sha256:972c162937cc3f27a3aa97e7f8981e6cbf712805362fa5420658889079573660 size: 1776
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl apply -f deployment.yml
+deployment.apps/guestbook unchanged
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl port-forward deployment.apps/guestbook:v2 3000:3000
+Error from server (NotFound): deployments.apps "guestbook:v2" not found
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl apply -f deployment.yml
+deployment.apps/guestbook configured
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl port-forward deployment.apps/guestbook:v2 3000:3000
+Error from server (NotFound): deployments.apps "guestbook:v2" not found
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ d
+ocker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/$MY_NAMESPACE/guestbook:v1s.icr.io/$MY_NAMESPACE/guestbook:v1estbook:v1 && docker
+[+] Building 1.4s (19/19) FINISHED             docker:default
+ => [internal] load build definition from Dockerfile     0.0s
+ => => transferring dockerfile: 620B                     0.0s
+ => [internal] load metadata for docker.io/library/ubun  0.7s
+ => [internal] load metadata for docker.io/library/gola  0.8s
+ => [internal] load .dockerignore                        0.0s
+ => => transferring context: 2B                          0.0s
+ => [builder 1/6] FROM docker.io/library/golang:1.18@sh  0.0s
+ => [stage-1 1/7] FROM docker.io/library/ubuntu:18.04@s  0.0s
+ => [internal] load build context                        0.0s
+ => => transferring context: 1.23kB                      0.0s
+ => CACHED [builder 2/6] WORKDIR /app                    0.0s
+ => CACHED [builder 3/6] COPY main.go .                  0.0s
+ => CACHED [builder 4/6] RUN go mod init guestbook       0.0s
+ => CACHED [builder 5/6] RUN go mod tidy                 0.0s
+ => CACHED [builder 6/6] RUN go build -o main main.go    0.0s
+ => CACHED [stage-1 2/7] COPY --from=builder /app/main   0.0s
+ => [stage-1 3/7] COPY public/index.html /app/public/in  0.1s
+ => [stage-1 4/7] COPY public/script.js /app/public/scr  0.1s
+ => [stage-1 5/7] COPY public/style.css /app/public/sty  0.0s
+ => [stage-1 6/7] COPY public/jquery.min.js /app/public  0.0s
+ => [stage-1 7/7] WORKDIR /app                           0.0s
+ => exporting to image                                   0.1s
+ => => exporting layers                                  0.1s
+ => => writing image sha256:64833afc083db17cd84fa235163  0.0s
+ => => naming to us.icr.io/sn-labs-knittala/guestbook:v  0.0s
+The push refers to repository [us.icr.io/sn-labs-knittala/guestbook]
+5f70bf18a086: Layer already exists 
+4c021bd9e92a: Pushed 
+d5b82a70cd26: Pushed 
+f15bfb8cf01f: Pushed 
+e0ab807bbed7: Pushed 
+21f71d20e354: Layer already exists 
+548a79621a42: Layer already exists 
+v1: digest: sha256:1ede2d520d0bf95a2edeaf26e5ffd3f5604dfb906122e5cd7b592e01cbb25fce size: 1776
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guest
+book$ kubectl apply -f deployment.yml
+The Deployment "guestbook" is invalid: spec.template.spec.containers[0].resources.requests: Invalid value: "20m": must be less than or equal to cpu limit of 5m
+theia@theiaopenshift-knittala:/home/project/guestbook/
+v1/guestbook$ kubectl apply -f deployment.yml
+deployment.apps/guestbook configured
+theia@theiaopenshift-knittala:/home/project/guestbook/
+v1/guestbook$ kubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+ok$ docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/$MY_NAMESPACE/guestbook:v1icr.io/$MY_NAMESPACE/guestbook:v1guestbook:v1 && doc
+[+] Building 1.1s (19/19) FINISHED               docker:default
+ => [internal] load build definition from Dockerfile       0.0s
+ => => transferring dockerfile: 620B                       0.0s
+ => [internal] load metadata for docker.io/library/ubuntu  0.7s
+ => [internal] load metadata for docker.io/library/golang  0.3s
+ => [internal] load .dockerignore                          0.0s
+ => => transferring context: 2B                            0.0s
+ => [internal] load build context                          0.0s
+ => => transferring context: 1.23kB                        0.0s
+ => [builder 1/6] FROM docker.io/library/golang:1.18@sha2  0.0s
+ => [stage-1 1/7] FROM docker.io/library/ubuntu:18.04@sha  0.0s
+ => CACHED [builder 2/6] WORKDIR /app                      0.0s
+ => CACHED [builder 3/6] COPY main.go .                    0.0s
+ => CACHED [builder 4/6] RUN go mod init guestbook         0.0s
+ => CACHED [builder 5/6] RUN go mod tidy                   0.0s
+ => CACHED [builder 6/6] RUN go build -o main main.go      0.0s
+ => CACHED [stage-1 2/7] COPY --from=builder /app/main /a  0.0s
+ => [stage-1 3/7] COPY public/index.html /app/public/inde  0.0s
+ => [stage-1 4/7] COPY public/script.js /app/public/scrip  0.0s
+ => [stage-1 5/7] COPY public/style.css /app/public/style  0.0s
+ => [stage-1 6/7] COPY public/jquery.min.js /app/public/j  0.1s
+ => [stage-1 7/7] WORKDIR /app                             0.0s
+ => exporting to image                                     0.1s
+ => => exporting layers                                    0.1s
+ => => writing image sha256:ba35a05f3d3127f82c46dbc3ce8b5  0.0s
+ => => naming to us.icr.io/sn-labs-knittala/guestbook:v1   0.0s
+The push refers to repository [us.icr.io/sn-labs-knittala/guestbook]
+5f70bf18a086: Layer already exists 
+8bf4630c0558: Pushed 
+d3f788c247be: Pushed 
+de403176a359: Pushed 
+fd8d1af9eb21: Pushed 
+21f71d20e354: Layer already exists 
+548a79621a42: Layer already exists 
+v1: digest: sha256:972c162937cc3f27a3aa97e7f8981e6cbf712805362fa5420658889079573660 size: 1776
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+ok$ kubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+^Ctheia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+cker push us.icr.io/$MY_NAMESPACE/guestbook:v1guestbook:v1 && doc
+[+] Building 1.0s (19/19) FINISHED               docker:default
+ => [internal] load build definition from Dockerfile       0.0s
+ => => transferring dockerfile: 620B                       0.0s
+ => [internal] load metadata for docker.io/library/ubuntu  0.5s
+ => [internal] load metadata for docker.io/library/golang  0.8s
+ => [internal] load .dockerignore                          0.0s
+ => => transferring context: 2B                            0.0s
+ => [builder 1/6] FROM docker.io/library/golang:1.18@sha2  0.0s
+ => [internal] load build context                          0.0s
+ => => transferring context: 205B                          0.0s
+ => [stage-1 1/7] FROM docker.io/library/ubuntu:18.04@sha  0.0s
+ => CACHED [builder 2/6] WORKDIR /app                      0.0s
+ => CACHED [builder 3/6] COPY main.go .                    0.0s
+ => CACHED [builder 4/6] RUN go mod init guestbook         0.0s
+ => CACHED [builder 5/6] RUN go mod tidy                   0.0s
+ => CACHED [builder 6/6] RUN go build -o main main.go      0.0s
+ => CACHED [stage-1 2/7] COPY --from=builder /app/main /a  0.0s
+ => CACHED [stage-1 3/7] COPY public/index.html /app/publ  0.0s
+ => CACHED [stage-1 4/7] COPY public/script.js /app/publi  0.0s
+ => CACHED [stage-1 5/7] COPY public/style.css /app/publi  0.0s
+ => CACHED [stage-1 6/7] COPY public/jquery.min.js /app/p  0.0s
+ => CACHED [stage-1 7/7] WORKDIR /app                      0.0s
+ => exporting to image                                     0.0s
+ => => exporting layers                                    0.0s
+ => => writing image sha256:ba35a05f3d3127f82c46dbc3ce8b5  0.0s
+ => => naming to us.icr.io/sn-labs-knittala/guestbook:v1   0.0s
+The push refers to repository [us.icr.io/sn-labs-knittala/guestbook]
+5f70bf18a086: Layer already exists 
+8bf4630c0558: Layer already exists 
+d3f788c247be: Layer already exists 
+de403176a359: Layer already exists 
+fd8d1af9eb21: Layer already exists 
+21f71d20e354: Layer already exists 
+548a79621a42: Layer already exists 
+v1: digest: sha256:972c162937cc3f27a3aa97e7f8981e6cbf712805362fa5420658889079573660 size: 1776
+ok$ kubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+^Ctheia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+ok$ kubectl apply -f deployment.yml
+deployment.apps/guestbook unchanged
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbo
+ok$ kubectl port-forward deployment.apps/guestbook 3000:3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000     $ docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v2icr.io/$
+MY_NAMESPACE/guestbook:v2 && dock$MY_NAMESPACE/guestbook:v && dock
+[+] Building 0.6s (19/19) FINISHED               docker:defaultoc
+ => [internal] load build definition from Dockerfile       0.0s
+ => => transferring dockerfile: 620B                       0.0s
+ => [internal] load metadata for docker.io/library/ubuntu  0.5s
+ => [internal] load metadata for docker.io/library/golang  0.3s
+ => [internal] load .dockerignore                          0.0s
+ => => transferring context: 2B                            0.0s
+ => [internal] load build context                          0.0s
+ => => transferring context: 205B                          0.0s
+ => [builder 1/6] FROM docker.io/library/golang:1.18@sha2  0.0s
+ => [stage-1 1/7] FROM docker.io/library/ubuntu:18.04@sha  0.0s
+ => CACHED [builder 2/6] WORKDIR /app                      0.0s
+ => CACHED [builder 3/6] COPY main.go .                    0.0s
+ => CACHED [builder 4/6] RUN go mod init guestbook         0.0s
+ => CACHED [builder 5/6] RUN go mod tidy                   0.0s
+ => CACHED [builder 6/6] RUN go build -o main main.go      0.0s
+ => CACHED [stage-1 2/7] COPY --from=builder /app/main /a  0.0s
+ => CACHED [stage-1 3/7] COPY public/index.html /app/publ  0.0s
+ => CACHED [stage-1 4/7] COPY public/script.js /app/publi  0.0s
+ => CACHED [stage-1 5/7] COPY public/style.css /app/publi  0.0s
+ => CACHED [stage-1 6/7] COPY public/jquery.min.js /app/p  0.0s
+ => CACHED [stage-1 7/7] WORKDIR /app                      0.0s
+ => exporting to image                                     0.0s
+ => => exporting layers                                    0.0s
+ => => writing image sha256:ba35a05f3d3127f82c46dbc3ce8b5  0.0s
+ => => naming to us.icr.io/sn-labs-knittala/guestbook:v2   0.0s
+The push refers to repository [us.icr.io/sn-labs-knittala/guestbook]
+5f70bf18a086: Layer already exists 
+8bf4630c0558: Layer already exists 
+d3f788c247be: Layer already exists 
+de403176a359: Layer already exists 
+fd8d1af9eb21: Layer already exists 
+21f71d20e354: Layer already exists 
+548a79621a42: Layer already exists 
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl apply -f deployment.yml deployment.ymlift-knittala:/home/project/guestbook/v1/guestbook$ kubectl apply -
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl port-forward deployment.apps/guestbook 3000:3000tbook 3000:3000t/guestbook/v1/guestbook$ kubectl port-fo
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+Handling connection for 3000
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl port-forward deployment.apps/guestbook:v2 3000:3000ok:v2 3000:3000/guestbook/v1/guestbook$ kubectl port-fo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl apply -f deployment.ymlward deployment.apps/guestbook 3000:3000uestbook/v1/guestbook$ kubectl port-fo
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl port-forward deployment.apps/guestbook:v2 3000:3000/home/project/guestbook/v1/guestbook$ kubectl apply -
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl port-forward deployment.apps/guestbook 3000:3000ok:v2 3000:3000uestbook/v1/guestbook$ kubectl port-fo
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+Handling connection for 3000
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl rollout history deployment/guestbooktory deployment/guestbookoject/guestbook/v1/guestbook$ kubec
+deployment.apps/guestbook 
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+3         <none>
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl rollout history deployments guestbook --revision=3ts guestbook --revision=2v1/guestbook$ kubec
+deployment.apps/guestbook with revision #3
+Pod Template:
+  Labels:       app=guestbook
+        pod-template-hash=5547dffcbf
+  Containers:
+   guestbook:
+    Image:      us.icr.io/sn-labs-knittala/guestbook:v2
+    Port:       3000/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:      5m
+    Requests:
+      cpu:      2m
+    Environment:        <none>
+    Mounts:     <none>
+  Volumes:      <none>
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl get rs
+NAME                               DESIRED   CURRENT   READY   AGE$ kubec
+guestbook-54d5b688fd               0         0         0       25m
+guestbook-5547dffcbf               1         1         1       4m54s
+guestbook-c7b7bc7b4                0         0         0       56m
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl rollout undo deployment/guestbook --to-revision=1guestbook --to-revision=1/v1/guestbook$ kubec
+deployment.apps/guestbook rolled back
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl get rs
+NAME                               DESIRED   CURRENT   READY   AGE
+guestbook-54d5b688fd               0         0         0       29m
+guestbook-5547dffcbf               0         0         0       8m54s
+guestbook-c7b7bc7b4                1         1         1       60m
+openshift-web-console-677765dd5c   2         2         2       77m
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl rollout undo deploymeo-revision=1 --to
+error: unable to find specified revision 1 in history
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl rollout undo deploymeo-revision=2 --to
+deployment.apps/guestbook rolled back
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ kubectl get rs
+NAME                               DESIRED   CURRENT   READY   AGE
+guestbook-54d5b688fd               1         1         0       30m
+guestbook-5547dffcbf               0         0         0       9m34s
+guestbook-c7b7bc7b4                1         1         1       61m
+openshift-web-console-677765dd5c   2         2         2       78m
+theia@theiaopenshift-knittala:/home/project/guestbook/v1/guestbook$ 
