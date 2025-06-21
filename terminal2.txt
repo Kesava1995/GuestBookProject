@@ -1,0 +1,106 @@
+theia@theiaopenshift-knittala:/home/project$ kubectl autoscale deployment guestbook --cpu-percent=5 --min=1 --max=10
+horizontalpodautoscaler.autoscaling/guestbook autoscaled
+theia@theiaopenshift-knittala:/home/project$ kubectl get hpa guestbook
+NAME        REFERENCE              TARGETS        MINPODS   MAXPODS   REPLICAS   AGE
+guestbook   Deployment/guestbook   <unknown>/5%   1         10        0          15s
+theia@theiaopenshift-knittala:/home/project$ kubectl run -i --tty load-generator --rm --image=busybox:1.36.0 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- https://knittala-3000.theiaopenshiftnext-0-labs-prod-theiaopenshift-4-tor01.proxy.cognitiveclass.ai/; done"
+        <input autocomplete="off" id="guestbook-entry-content" type="text">
+        <a href="#" id="guestbook-submit">Submit</a>
+      </form>
+    </div>
+
+    <div>
+      <p><h2 id="guestbook-host-address"></h2></p>
+      <p><a href="env">/env</a>
+      <a href="info">/info</a></p>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+wget: note: TLS certificate validation not implemented
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta charset="utf-8">
+    <meta content="width=device-width" name="viewport">
+    <link href="style.css" rel="stylesheet">
+    <title>Lavanya's Guestbook - v1</title>
+  </head>
+  <body>
+    <div id="header">
+      <h1>Guestbook - v1</h1>
+    </div>
+
+    <div id="guestbook-entries">
+      <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+      <p>Waiting for database connection... <i class='em em-boat'></i></p>
+      
+    </div>
+
+    <div>
+      <form id="guestbook-form">
+        <input autocomplete="off" id="guestbook-entry-content" type="text">
+        <a href="#" id="guestbook-submit">Submit</a>
+      </form>
+    </div>
+
+    <div>
+      <p><h2 id="guestbook-host-address"></h2></p>
+      <p><a href="env">/env</a>
+      <a href="info">/info</a></p>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+wget: note: TLS certificate validation not implemented
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta charset="utf-8">
+    <meta content="width=device-width" name="viewport">
+    <link href="style.css" rel="stylesheet">
+    <title>Lavanya's Guestbook - v1</title>
+  </head>
+  <body>
+    <div id="header">
+      <h1>Guestbook - v1</h1>
+    </div>
+
+    <div id="guestbook-entries">
+      <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+      <p>Waiting for database connection... <i class='em em-boat'></i></p>
+      
+    </div>
+
+    <div>
+      <form id="guestbook-form">
+        <input autocomplete="off" id="guestbook-entry-content" type="text">
+        <a href="#" id="guestbook-submit">Submit</a>
+      </form>
+    </div>
+
+    <div>
+      <p><h2 id="guestbook-host-address"></h2></p>
+      <p><a href="env">/env</a>
+      <a href="info">/info</a></p>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+wget: note: TLS certificate validation not implemented
+^Cpod "load-generator" deleted
+pod sn-labs-knittala/load-generator terminated (Error)
+theia@theiaopenshift-knittala:/home/project$ kubectl get hpa guestbook --watch
+NAME        REFERENCE              TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
+guestbook   Deployment/guestbook   5%/5%     1         10        1          3m55s
+guestbook   Deployment/guestbook   10%/5%    1         10        1          4m1s
+guestbook   Deployment/guestbook   10%/5%    1         10        2          4m16s
+theia@theiaopenshift-knittala:/home/project$ kubectl get hpa guestbook
+NAME        REFERENCE              TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
+guestbook   Deployment/guestbook   0%/5%     1         10        2          5m47s
+theia@theiaopenshift-knittala:/home/project$ 
